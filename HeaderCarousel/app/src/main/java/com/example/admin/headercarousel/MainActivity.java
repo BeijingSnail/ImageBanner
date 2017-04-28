@@ -28,9 +28,10 @@ public class MainActivity extends AppCompatActivity {
         imageBanner = (ImageBanner) findViewById(R.id.iamge_banner);
         dotLinearlayout = (LinearLayout) findViewById(R.id.dot_ll);
         initData();
-        imageBanner.start(this, imageList, 4000, dotLinearlayout,
-                R.layout.ad_bottom_item, R.id.ad_item_v,
+        imageBanner.setDotLinearlayout(dotLinearlayout,R.layout.ad_bottom_item, R.id.ad_item_v,
                 R.drawable.dot_focused, R.drawable.dot_normal);
+        imageBanner.start(this, imageList);
+
     }
 
 

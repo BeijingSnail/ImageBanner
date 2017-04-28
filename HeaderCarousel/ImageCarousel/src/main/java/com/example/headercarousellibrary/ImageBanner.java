@@ -31,29 +31,58 @@ public class ImageBanner extends ViewPager {
 
     /**
      * 滑动间隔时间
+     * 默认2秒
      */
-    private int scrollTime = 0;
+    private int scrollTime = 2000;
     private Timer timer;
     private int oldIndex = 0;
     private int curIndex = 0;
+
+    private LinearLayout ovalLayout;
+
+    private int ovalLayoutId, ovalLayoutItemId, focusedId, normalId;
+
+    /**
+     * @param scrollTime 滑动间隔时间，单位毫秒
+     */
+    public void setScrollTime(int scrollTime) {
+        this.scrollTime = scrollTime;
+    }
+
+
+    /**
+     * @param dotLinearlayout 设置指示器的父布局
+     */
+    public void setDotLinearlayout(LinearLayout dotLinearlayout, int ovalLayoutId,
+                                   int ovalLayoutItemId, int focusedId, int normalId) {
+        this.ovalLayout = dotLinearlayout;
+        this.ovalLayoutId = ovalLayoutId;
+        this.ovalLayoutItemId = ovalLayoutItemId;
+        this.focusedId = focusedId;
+        this.normalId = normalId;
+    }
 
     public ImageBanner(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public void start(Activity mainActivity, List<View> imgList,
-                      int scrollTime, LinearLayout ovalLayout, int ovalLayoutId,
-                      int ovalLayoutItemId, int focusedId, int normalId) {
-        mActivity = mainActivity;
-        viewList = imgList;
-        this.scrollTime = scrollTime;
-        setOvalLayout(ovalLayout, ovalLayoutId, ovalLayoutItemId, focusedId,
-                normalId);
+    public void start(Activity mainActivity, List<View> imgList) {
+        this.mActivity = mainActivity;
+
+        this.viewList = imgList;
+
+        if (ovalLayout != null) {
+            setOvalLayout(ovalLayout, ovalLayoutId, ovalLayoutItemId, focusedId, normalId);
+        }
         this.setAdapter(new MyPagerAdapter());
+
         if (scrollTime != 0 && imgList.size() > 1) {
+
+            //设置viewpage的滑动速度
             new FixedSpeedScroller(mActivity).setDuration(this, 700);
 
             startTimer();
+
             this.setOnTouchListener(new OnTouchListener() {
                 public boolean onTouch(View v, MotionEvent event) {
                     if (event.getAction() == MotionEvent.ACTION_UP) {
@@ -77,12 +106,14 @@ public class ImageBanner extends ViewPager {
             LayoutInflater inflater = LayoutInflater.from(mActivity);
             //移除所有子view不然小圆点会累加
             ovalLayout.removeAllViews();
+
             for (int i = 0; i < viewList.size(); i++) {
                 ovalLayout.addView(inflater.inflate(ovalLayoutId, null));
-
             }
+
             ovalLayout.getChildAt(0).findViewById(ovalLayoutItemId)
                     .setBackgroundResource(focusedId);
+
             this.setOnPageChangeListener(new OnPageChangeListener() {
                 public void onPageSelected(int i) {
                     curIndex = i % viewList.size();
@@ -145,13 +176,11 @@ public class ImageBanner extends ViewPager {
             return Integer.MAX_VALUE;
         }
 
-        public Object instantiateItem(View v, int i) {
-            if (((ViewPager) v).getChildCount() == viewList.size()) {
-                ((ViewPager) v)
-                        .removeView(viewList.get(i % viewList.size()));
-            }
-            ((ViewPager) v).addView(viewList.get(i % viewList.size()), 0);
-            return viewList.get(i % viewList.size());
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            container.addView(viewList.get(position % viewList.size()));
+            return viewList.get(position % viewList.size());
+
         }
 
         @Override
