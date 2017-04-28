@@ -108,11 +108,26 @@ public class ImageBanner extends ViewPager {
             ovalLayout.removeAllViews();
 
             for (int i = 0; i < viewList.size(); i++) {
-                ovalLayout.addView(inflater.inflate(ovalLayoutId, null));
+
+                CircleView view = new CircleView(mActivity);
+                //设置宽高
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(10, 10);
+                //设置margin
+                params.setMargins(2, 0, 2, 0);
+                view.setLayoutParams(params);
+                //先全部设置默认颜色
+                view.setCircleColor(normalId);
+//                view.setBackgroundResource(normalId);
+                ovalLayout.addView(view);
+//                ovalLayout.addView(inflater.inflate(ovalLayoutId, null));
             }
 
-            ovalLayout.getChildAt(0).findViewById(ovalLayoutItemId)
-                    .setBackgroundResource(focusedId);
+            //将低一个设置指示颜色
+            CircleView circleView = (CircleView) ovalLayout.getChildAt(0);
+            circleView.setBackgroundColor(focusedId);
+//            ovalLayout.getChildAt(0).setBackgroundColor(focusedId);
+//            ovalLayout.getChildAt(0).findViewById(ovalLayoutItemId)
+//                    .setBackgroundResource(focusedId);
 
             this.setOnPageChangeListener(new OnPageChangeListener() {
                 public void onPageSelected(int i) {
@@ -120,10 +135,12 @@ public class ImageBanner extends ViewPager {
                     if (ovalLayoutItemId == 0 || ovalLayout.getChildAt(oldIndex) == null || ovalLayout.getChildAt(curIndex) == null) {
                         return;
                     }
-                    ovalLayout.getChildAt(oldIndex).findViewById(ovalLayoutItemId)
-                            .setBackgroundResource(normalId);
-                    ovalLayout.getChildAt(curIndex).findViewById(ovalLayoutItemId)
-                            .setBackgroundResource(focusedId);
+                    ovalLayout.getChildAt(oldIndex).setBackgroundResource(normalId);
+                    ovalLayout.getChildAt(curIndex).setBackgroundResource(focusedId);
+//                    ovalLayout.getChildAt(oldIndex).findViewById(ovalLayoutItemId)
+//                            .setBackgroundResource(normalId);
+//                    ovalLayout.getChildAt(curIndex).findViewById(ovalLayoutItemId)
+//                            .setBackgroundResource(focusedId);
                     oldIndex = curIndex;
                 }
 
@@ -180,7 +197,6 @@ public class ImageBanner extends ViewPager {
         public Object instantiateItem(ViewGroup container, int position) {
             container.addView(viewList.get(position % viewList.size()));
             return viewList.get(position % viewList.size());
-
         }
 
         @Override
