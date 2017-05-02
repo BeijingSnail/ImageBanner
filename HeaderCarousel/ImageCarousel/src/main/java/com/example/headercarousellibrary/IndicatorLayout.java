@@ -25,6 +25,7 @@ public class IndicatorLayout extends LinearLayout implements ViewPager.OnPageCha
         TypedArray arrray = context.obtainStyledAttributes(attrs, R.styleable.IndicatorLayout);
         defaultColor = arrray.getColor(R.styleable.IndicatorLayout_defaultColor, Color.WHITE);
         currentColor = arrray.getColor(R.styleable.IndicatorLayout_currentColor, Color.RED);
+        arrray.recycle();
     }
 
     public void setNumber(ViewPager viewPager, int number) {
