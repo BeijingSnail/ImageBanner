@@ -1,3 +1,5 @@
+![Image text](https://github.com/BeijingSnail/HeaderCarousel/images/ImageBanne.jpg)
+
 # HeaderCarousel
 图片自动轮播器（多用于头部或底部展示）
 #### ImageBanner继承自ViewPager
