@@ -1,5 +1,3 @@
-![Image text](https://github.com/BeijingSnail/HeaderCarousel/images/ImageBanne.jpg)
-
 # HeaderCarousel
 图片自动轮播器（多用于头部或底部展示）
 #### ImageBanner继承自ViewPager
@@ -22,5 +20,7 @@ imageBanner.setBannerClickListener(new View.OnClickListener() {
 - 可以根据需要选择是否添加该布局
 - 内部实现了OnPageChangeListener接口，用以监听ImageBanner的滑动事件，来实现指示器的联动
 - 在xml中可以更改defaultColor和currentColor的颜色（默认颜色为白、红）
+
+![Image text](https://github.com/BeijingSnail/HeaderCarousel/blob/master/HeaderCarousel/images/ImageBanner.png)
 
 
