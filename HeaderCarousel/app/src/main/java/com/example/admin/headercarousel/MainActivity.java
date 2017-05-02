@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         imageBanner.setDotLinearlayout(indicatorLayout);
         //开始轮播
         imageBanner.start(this, imageList);
+        
     }
 
     /**
