@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.example.headercarousellibrary.ImageBanner;
+import com.example.headercarousellibrary.IndicatorLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,19 +19,21 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageBanner imageBanner;
 
-    private LinearLayout dotLinearlayout;
+    private IndicatorLayout indicatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         imageBanner = (ImageBanner) findViewById(R.id.iamge_banner);
-        dotLinearlayout = (LinearLayout) findViewById(R.id.dot_ll);
+        indicatorLayout = (IndicatorLayout) findViewById(R.id.indicator_layout);
         initData();
-        imageBanner.setDotLinearlayout(dotLinearlayout, R.layout.ad_bottom_item, R.id.ad_item_v,
-                R.color.currentcolor, R.color.defaultcolor);
+        //设置滑动时间间隔，不设置时默认2秒
+        imageBanner.setScrollTime(3000);
+        //为ImageBanner设置指示器
+        imageBanner.setDotLinearlayout(indicatorLayout);
+        //开始轮播
         imageBanner.start(this, imageList);
-
     }
 
 
@@ -43,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < images.length; i++) {
             ImageView imageView = new ImageView(this);
             imageView.setImageResource(images[i]);
-            //设置图片显示模式
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageList.add(imageView);
         }

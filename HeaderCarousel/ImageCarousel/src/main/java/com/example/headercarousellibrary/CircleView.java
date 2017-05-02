@@ -7,11 +7,12 @@ import android.util.AttributeSet;
 import android.view.View;
 
 /**
- * 自定义圆形view
+ * 自定义圆形view（小圆点）
  * Created by zhangzhiqiang on 2017/4/28.
  */
 
 public class CircleView extends View {
+
     private Paint circlePaint;
 
     public CircleView(Context context) {
@@ -29,26 +30,19 @@ public class CircleView extends View {
         this.circlePaint.setStyle(Paint.Style.FILL);
     }
 
-
     public void setCircleColor(int resource) {
-        circlePaint.setColor(getResources().getColor(resource));
-        //设置默认颜色
-//        circlePaint.setARGB(255, 229, 229, 229);
+        //设置圆点颜色
+        circlePaint.setColor(resource);
+        //刷新onDraw
         invalidate();
-    }
-
-    @Override
-    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        super.onLayout(changed, left, top, right, bottom);
-
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         int center = getWidth() / 2;
+        //以view的1/2作为圆心画圆
         canvas.drawCircle(center, center, center, circlePaint);
-
     }
 
 }

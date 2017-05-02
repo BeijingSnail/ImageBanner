@@ -6,11 +6,9 @@ import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import java.util.List;
 import java.util.Timer;
@@ -38,9 +36,7 @@ public class ImageBanner extends ViewPager {
     private int oldIndex = 0;
     private int curIndex = 0;
 
-    private LinearLayout ovalLayout;
-
-    private int ovalLayoutId, ovalLayoutItemId, focusedId, normalId;
+    private IndicatorLayout mIndicatorLayout;
 
     /**
      * @param scrollTime 滑动间隔时间，单位毫秒
@@ -49,17 +45,11 @@ public class ImageBanner extends ViewPager {
         this.scrollTime = scrollTime;
     }
 
-
     /**
-     * @param dotLinearlayout 设置指示器的父布局
+     * @param indicatorLayout 设置指示器布局
      */
-    public void setDotLinearlayout(LinearLayout dotLinearlayout, int ovalLayoutId,
-                                   int ovalLayoutItemId, int focusedId, int normalId) {
-        this.ovalLayout = dotLinearlayout;
-        this.ovalLayoutId = ovalLayoutId;
-        this.ovalLayoutItemId = ovalLayoutItemId;
-        this.focusedId = focusedId;
-        this.normalId = normalId;
+    public void setDotLinearlayout(IndicatorLayout indicatorLayout) {
+        this.mIndicatorLayout = indicatorLayout;
     }
 
     public ImageBanner(Context context, AttributeSet attrs) {
@@ -71,8 +61,8 @@ public class ImageBanner extends ViewPager {
 
         this.viewList = imgList;
 
-        if (ovalLayout != null) {
-            setOvalLayout(ovalLayout, ovalLayoutId, ovalLayoutItemId, focusedId, normalId);
+        if (mIndicatorLayout != null) {
+            setOvalLayout(mIndicatorLayout);
         }
         this.setAdapter(new MyPagerAdapter());
 
@@ -100,67 +90,15 @@ public class ImageBanner extends ViewPager {
         }
     }
 
-    private void setOvalLayout(final LinearLayout ovalLayout, int ovalLayoutId,
-                               final int ovalLayoutItemId, final int focusedId, final int normalId) {
-        if (ovalLayout != null) {
-            LayoutInflater inflater = LayoutInflater.from(mActivity);
+    private void setOvalLayout(final IndicatorLayout mIndicatorLayout) {
+        if (mIndicatorLayout != null) {
             //移除所有子view不然小圆点会累加
-            ovalLayout.removeAllViews();
-
-            for (int i = 0; i < viewList.size(); i++) {
-
-                CircleView view = new CircleView(mActivity);
-                //设置宽高
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(10, 10);
-                //设置margin
-                params.setMargins(2, 0, 2, 0);
-                view.setLayoutParams(params);
-                //先全部设置默认颜色
-                view.setCircleColor(normalId);
-//                view.setBackgroundResource(normalId);
-                ovalLayout.addView(view);
-//                ovalLayout.addView(inflater.inflate(ovalLayoutId, null));
-            }
-
-            //将第一个设置指示颜色
-            CircleView circleView = (CircleView) ovalLayout.getChildAt(0);
-            circleView.setCircleColor(focusedId);
-//            circleView.setBackgroundColor(focusedId);
-//            ovalLayout.getChildAt(0).setBackgroundColor(focusedId);
-//            ovalLayout.getChildAt(0).findViewById(ovalLayoutItemId)
-//                    .setBackgroundResource(focusedId);
-
-            this.setOnPageChangeListener(new OnPageChangeListener() {
-                public void onPageSelected(int i) {
-                    curIndex = i % viewList.size();
-                    if (ovalLayoutItemId == 0 || ovalLayout.getChildAt(oldIndex) == null || ovalLayout.getChildAt(curIndex) == null) {
-                        return;
-                    }
-                    CircleView oldView = (CircleView) ovalLayout.getChildAt(oldIndex);
-                    oldView.setCircleColor(normalId);
-                    CircleView newView = (CircleView) ovalLayout.getChildAt(curIndex);
-                    newView.setCircleColor(focusedId);
-//                    ovalLayout.getChildAt(oldIndex).setBackgroundResource(normalId);
-//                    ovalLayout.getChildAt(curIndex).setBackgroundResource(focusedId);
-//                    ovalLayout.getChildAt(oldIndex).findViewById(ovalLayoutItemId)
-//                            .setBackgroundResource(normalId);
-//                    ovalLayout.getChildAt(curIndex).findViewById(ovalLayoutItemId)
-//                            .setBackgroundResource(focusedId);
-                    oldIndex = curIndex;
-                }
-
-                public void onPageScrolled(int arg0, float arg1, int arg2) {
-                }
-
-                public void onPageScrollStateChanged(int arg0) {
-                }
-            });
+            mIndicatorLayout.removeAllViews();
+            //传入viewoPager设置指示器小圆点数量
+            mIndicatorLayout.setNumber(this, viewList.size());
         }
     }
 
-    public int getCurIndex() {
-        return curIndex;
-    }
 
     public void stopTimer() {
         if (timer != null) {
