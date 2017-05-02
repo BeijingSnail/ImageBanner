@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         imageBanner.start(this, imageList);
     }
 
-
     /**
      * 这里使用本地图片代替网络数据
      */

@@ -33,9 +33,6 @@ public class ImageBanner extends ViewPager {
      */
     private int scrollTime = 2000;
     private Timer timer;
-    private int oldIndex = 0;
-    private int curIndex = 0;
-
     private IndicatorLayout mIndicatorLayout;
 
     /**
@@ -57,6 +54,7 @@ public class ImageBanner extends ViewPager {
     }
 
     public void start(Activity mainActivity, List<View> imgList) {
+
         this.mActivity = mainActivity;
 
         this.viewList = imgList;
@@ -64,6 +62,7 @@ public class ImageBanner extends ViewPager {
         if (mIndicatorLayout != null) {
             setOvalLayout(mIndicatorLayout);
         }
+
         this.setAdapter(new MyPagerAdapter());
 
         if (scrollTime != 0 && imgList.size() > 1) {
@@ -92,13 +91,12 @@ public class ImageBanner extends ViewPager {
 
     private void setOvalLayout(final IndicatorLayout mIndicatorLayout) {
         if (mIndicatorLayout != null) {
-            //移除所有子view不然小圆点会累加
+            //移除所有子view防止小圆点累加
             mIndicatorLayout.removeAllViews();
-            //传入viewoPager设置指示器小圆点数量
+            //传入viewoPager并设置指示器小圆点数量
             mIndicatorLayout.setNumber(this, viewList.size());
         }
     }
-
 
     public void stopTimer() {
         if (timer != null) {
