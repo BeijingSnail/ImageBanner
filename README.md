@@ -21,6 +21,24 @@ imageBanner.setBannerClickListener(new View.OnClickListener() {
 - 内部实现了OnPageChangeListener接口，用以监听ImageBanner的滑动事件，来实现指示器的联动
 - 在xml中可以更改defaultColor和currentColor的颜色（默认颜色为白、红）
 
+#### 可在项目中添加依赖
+1 Add it in your root build.gradle at the end of repositories:
+```
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
+2 Add the dependency
+```
+dependencies {
+	        compile 'com.github.BeijingSnail:HeaderCarousel:1.0'
+	}
+```
+
 ![Image text](https://github.com/BeijingSnail/HeaderCarousel/blob/master/HeaderCarousel/images/ImageBanner.png)
 
 
