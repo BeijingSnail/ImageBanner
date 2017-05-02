@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.headercarousellibrary.ImageBanner;
 import com.example.headercarousellibrary.IndicatorLayout;
@@ -34,7 +35,13 @@ public class MainActivity extends AppCompatActivity {
         imageBanner.setDotLinearlayout(indicatorLayout);
         //开始轮播
         imageBanner.start(this, imageList);
-        
+        imageBanner.setBannerClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "点击第" + v.getId() + "张", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     /**

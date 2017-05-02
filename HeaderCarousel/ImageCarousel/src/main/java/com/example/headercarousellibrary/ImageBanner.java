@@ -35,6 +35,12 @@ public class ImageBanner extends ViewPager {
     private Timer timer;
     private IndicatorLayout mIndicatorLayout;
 
+    private OnClickListener mBannerClickListener;
+
+    public void setBannerClickListener(OnClickListener bannerClickListener) {
+        this.mBannerClickListener = bannerClickListener;
+    }
+
     /**
      * @param scrollTime 滑动间隔时间，单位毫秒
      */
@@ -135,8 +141,13 @@ public class ImageBanner extends ViewPager {
         }
 
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            container.addView(viewList.get(position % viewList.size()));
+        public Object instantiateItem(ViewGroup container, final int position) {
+            View view = viewList.get(position % viewList.size());
+            view.setId(position % viewList.size());
+            container.addView(view);
+            if (mBannerClickListener != null) {
+                view.setOnClickListener(mBannerClickListener);
+            }
             return viewList.get(position % viewList.size());
         }
 
@@ -158,4 +169,5 @@ public class ImageBanner extends ViewPager {
         }
 
     }
+
 }
