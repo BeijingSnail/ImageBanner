@@ -31,7 +31,10 @@ public class CircleView extends View {
 
 
     public void setCircleColor(int resource) {
-        circlePaint.setColor(resource);
+        circlePaint.setColor(getResources().getColor(resource));
+        //设置默认颜色
+//        circlePaint.setARGB(255, 229, 229, 229);
+        invalidate();
     }
 
     @Override
@@ -45,6 +48,7 @@ public class CircleView extends View {
         super.onDraw(canvas);
         int center = getWidth() / 2;
         canvas.drawCircle(center, center, center, circlePaint);
+
     }
 
 }

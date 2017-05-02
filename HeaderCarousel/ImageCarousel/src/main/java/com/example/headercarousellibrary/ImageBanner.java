@@ -122,9 +122,10 @@ public class ImageBanner extends ViewPager {
 //                ovalLayout.addView(inflater.inflate(ovalLayoutId, null));
             }
 
-            //将低一个设置指示颜色
+            //将第一个设置指示颜色
             CircleView circleView = (CircleView) ovalLayout.getChildAt(0);
-            circleView.setBackgroundColor(focusedId);
+            circleView.setCircleColor(focusedId);
+//            circleView.setBackgroundColor(focusedId);
 //            ovalLayout.getChildAt(0).setBackgroundColor(focusedId);
 //            ovalLayout.getChildAt(0).findViewById(ovalLayoutItemId)
 //                    .setBackgroundResource(focusedId);
@@ -135,8 +136,12 @@ public class ImageBanner extends ViewPager {
                     if (ovalLayoutItemId == 0 || ovalLayout.getChildAt(oldIndex) == null || ovalLayout.getChildAt(curIndex) == null) {
                         return;
                     }
-                    ovalLayout.getChildAt(oldIndex).setBackgroundResource(normalId);
-                    ovalLayout.getChildAt(curIndex).setBackgroundResource(focusedId);
+                    CircleView oldView = (CircleView) ovalLayout.getChildAt(oldIndex);
+                    oldView.setCircleColor(normalId);
+                    CircleView newView = (CircleView) ovalLayout.getChildAt(curIndex);
+                    newView.setCircleColor(focusedId);
+//                    ovalLayout.getChildAt(oldIndex).setBackgroundResource(normalId);
+//                    ovalLayout.getChildAt(curIndex).setBackgroundResource(focusedId);
 //                    ovalLayout.getChildAt(oldIndex).findViewById(ovalLayoutItemId)
 //                            .setBackgroundResource(normalId);
 //                    ovalLayout.getChildAt(curIndex).findViewById(ovalLayoutItemId)
