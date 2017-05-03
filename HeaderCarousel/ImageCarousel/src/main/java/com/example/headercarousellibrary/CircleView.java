@@ -43,6 +43,7 @@ public class CircleView extends View {
         int center = getWidth() / 2;
         //以view的1/2作为圆心画圆
         canvas.drawCircle(center, center, center, circlePaint);
+        
     }
 
 }
