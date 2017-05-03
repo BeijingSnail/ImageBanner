@@ -28,7 +28,7 @@ public class CircleView extends View {
         this.circlePaint = new Paint();
         this.circlePaint.setAntiAlias(true);//消除锯齿
         this.circlePaint.setStyle(Paint.Style.FILL);
-        
+
     }
 
     public void setCircleColor(int resource) {
@@ -36,6 +36,7 @@ public class CircleView extends View {
         circlePaint.setColor(resource);
         //刷新onDraw
         invalidate();
+        
     }
 
     @Override
