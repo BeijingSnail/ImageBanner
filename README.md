@@ -39,6 +39,6 @@ dependencies {
 	}
 ```
 
-![Image text](https://github.com/BeijingSnail/HeaderCarousel/blob/master/HeaderCarousel/images/ImageBanner.png)
+![Image text](https://github.com/BeijingSnail/ImageBanner/blob/master/images/ImageBanner.png)
 
 
