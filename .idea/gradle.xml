@@ -8,7 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/ImageCarousel" />
+            <option value="$PROJECT_DIR$/BannerLibrary" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>

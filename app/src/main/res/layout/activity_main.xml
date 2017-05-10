@@ -6,18 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.admin.headercarousel.MainActivity">
+    tools:context="com.example.snail.imagebanner.MainActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="200dp">
 
-        <com.example.headercarousellibrary.ImageBanner
+        <com.example.bannerlibrary.ImageBanner
             android:id="@+id/iamge_banner"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <com.example.headercarousellibrary.IndicatorLayout
+        <com.example.bannerlibrary.IndicatorLayout
             android:id="@+id/indicator_layout"
             android:layout_width="match_parent"
             android:layout_height="10dp"
@@ -28,7 +28,7 @@
             app:currentColor="@color/currentcolor"
             app:defaultColor="@color/defaultcolor">
 
-        </com.example.headercarousellibrary.IndicatorLayout>
+        </com.example.bannerlibrary.IndicatorLayout>
 
     </FrameLayout>
 
