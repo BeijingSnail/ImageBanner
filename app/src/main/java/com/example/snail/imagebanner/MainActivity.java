@@ -2,12 +2,14 @@ package com.example.snail.imagebanner;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.bannerlibrary.ImageBanner;
 import com.example.bannerlibrary.IndicatorLayout;
+import com.example.bannerlibrary.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +37,20 @@ public class MainActivity extends AppCompatActivity {
         imageBanner.setDotLinearlayout(indicatorLayout);
         //开始轮播
         imageBanner.start(this, imageList);
-        imageBanner.setBannerClickListener(new View.OnClickListener() {
+        imageBanner.setBannerItemClickListener(new OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "点击第" + v.getId() + "张", Toast.LENGTH_SHORT).show();
+            public void onItemClick(int position) {
+                Log.d("zzq","-=-=-=-=-=-=-=");
+                Toast.makeText(MainActivity.this, "点击第" + position + "张", Toast.LENGTH_SHORT).show();
             }
         });
+//        imageBanner.setBannerClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d("zzq","-=-=-=-=-=-=-=");
+//                Toast.makeText(MainActivity.this, "点击第" + v.getId() + "张", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
     }
 
