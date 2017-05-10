@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/HeaderCarousel.iml" filepath="$PROJECT_DIR$/HeaderCarousel.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ImageCarousel/ImageCarousel.iml" filepath="$PROJECT_DIR$/ImageCarousel/ImageCarousel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BannerLibrary/BannerLibrary.iml" filepath="$PROJECT_DIR$/BannerLibrary/BannerLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ImageBanner.iml" filepath="$PROJECT_DIR$/ImageBanner.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
