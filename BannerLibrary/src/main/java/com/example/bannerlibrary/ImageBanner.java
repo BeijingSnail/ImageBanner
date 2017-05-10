@@ -2,13 +2,12 @@ package com.example.bannerlibrary;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Parcelable;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
+
+import com.example.bannerlibrary.adapter.BannerAdapter;
 
 import java.util.List;
 import java.util.Timer;
@@ -18,7 +17,7 @@ import java.util.TimerTask;
  * Created by zhangzhiqiagn on 2017/4/27.
  */
 
-public class ImageBanner extends ViewPager {
+public class ImageBanner extends ViewPager{
 
     private Activity mActivity;
 
@@ -34,11 +33,10 @@ public class ImageBanner extends ViewPager {
     private int scrollTime = 2000;
     private Timer timer;
     private IndicatorLayout mIndicatorLayout;
+    private OnItemClickListener mBannerItemClickListener;
 
-    private OnClickListener mBannerClickListener;
-
-    public void setBannerClickListener(OnClickListener bannerClickListener) {
-        this.mBannerClickListener = bannerClickListener;
+    public void setBannerItemClickListener(OnItemClickListener onItemClickListener) {
+        this.mBannerItemClickListener = onItemClickListener;
     }
 
     /**
@@ -59,7 +57,19 @@ public class ImageBanner extends ViewPager {
         super(context, attrs);
     }
 
+    public ImageBanner(Context context) {
+        super(context);
+    }
+
+    /**
+     * @param mainActivity
+     * @param imgList      view数组
+     */
     public void start(Activity mainActivity, List<View> imgList) {
+
+        if (imgList == null) {
+            throw new RuntimeException("imgList is null");
+        }
 
         this.mActivity = mainActivity;
 
@@ -69,11 +79,11 @@ public class ImageBanner extends ViewPager {
             setOvalLayout(mIndicatorLayout);
         }
 
-        this.setAdapter(new MyPagerAdapter());
+        this.setAdapter(new BannerAdapter(viewList, mBannerItemClickListener));
 
         if (scrollTime != 0 && imgList.size() > 1) {
 
-            //设置viewpage的滑动速度
+            //设置viewpager平移动画持续时间
             new FixedSpeedScroller(mActivity).setDuration(this, 700);
 
             startTimer();
@@ -125,49 +135,6 @@ public class ImageBanner extends ViewPager {
                 }
             }, scrollTime, scrollTime);
         }
-    }
-
-    private class MyPagerAdapter extends PagerAdapter {
-
-        public void notifyDataSetChanged() {
-            super.notifyDataSetChanged();
-        }
-
-        public int getCount() {
-            if (viewList.size() == 1) {
-                return viewList.size();
-            }
-            return Integer.MAX_VALUE;
-        }
-
-        @Override
-        public Object instantiateItem(ViewGroup container, final int position) {
-            View view = viewList.get(position % viewList.size());
-            view.setId(position % viewList.size());
-            container.addView(view);
-            if (mBannerClickListener != null) {
-                view.setOnClickListener(mBannerClickListener);
-            }
-            return viewList.get(position % viewList.size());
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            ((ViewGroup) container).removeView((View) object);
-
-        }
-
-        public boolean isViewFromObject(View arg0, Object arg1) {
-            return arg0 == (arg1);
-        }
-
-        public void restoreState(Parcelable arg0, ClassLoader arg1) {
-        }
-
-        public Parcelable saveState() {
-            return null;
-        }
-
     }
 
 }

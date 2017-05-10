@@ -8,6 +8,7 @@ import android.widget.Scroller;
 import java.lang.reflect.Field;
 
 /**
+ * 设置viewpager平移动画持续时间
  * Created by zhangzhiqiagn on 2017/4/27.
  */
 public class FixedSpeedScroller extends Scroller {
