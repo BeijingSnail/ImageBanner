@@ -6,8 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.bannerlibrary.IndicatorImageBaner;
-import com.example.bannerlibrary.IndicatorLayout;
+import com.example.bannerlibrary.IndicatorImageBanner;
 import com.example.bannerlibrary.OnItemClickListener;
 
 import java.util.ArrayList;
@@ -19,24 +18,17 @@ public class MainActivity extends AppCompatActivity {
 
     private int[] images = {R.mipmap.pic1, R.mipmap.pic2, R.mipmap.pic3, R.mipmap.pic4};
 
-    private IndicatorImageBaner imageBanner;
-
-    private IndicatorLayout indicatorLayout;
+    private IndicatorImageBanner indicatorImageBanner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        imageBanner = (IndicatorImageBaner) findViewById(R.id.iamge_banner);
-//        indicatorLayout = (IndicatorLayout) findViewById(R.id.indicator_layout);
+        indicatorImageBanner = (IndicatorImageBanner) findViewById(R.id.indicator_iamge_banner);
         initData();
-        //设置滑动时间间隔，不设置时默认2秒
-        imageBanner.setScrollTime(3000);
-        //为ImageBanner设置指示器
-//        imageBanner.setDotLinearlayout(indicatorLayout);
         //开始轮播
-        imageBanner.start(this, imageList);
-        imageBanner.setBannerItemClickListener(new OnItemClickListener() {
+        indicatorImageBanner.start(this, imageList);
+        indicatorImageBanner.setBannerItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
                 Toast.makeText(MainActivity.this, "点击第" + position + "张", Toast.LENGTH_SHORT).show();

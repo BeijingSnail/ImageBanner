@@ -24,7 +24,6 @@ public class CircleView extends View {
     }
 
     private void init() {
-
         this.circlePaint = new Paint();
         this.circlePaint.setAntiAlias(true);//消除锯齿
         this.circlePaint.setStyle(Paint.Style.FILL);
@@ -33,7 +32,6 @@ public class CircleView extends View {
     public void setCircleColor(int resource) {
         //设置圆点颜色
         circlePaint.setColor(resource);
-        //刷新onDraw
         invalidate();
     }
 
@@ -43,7 +41,6 @@ public class CircleView extends View {
         int center = getWidth() / 2;
         //以view的1/2作为圆心画圆
         canvas.drawCircle(center, center, center, circlePaint);
-
     }
 
 }

@@ -46,6 +46,7 @@ public class IndicatorLayout extends LinearLayout implements ViewPager.OnPageCha
             view.setCircleColor(defaultColor);
             this.addView(view);
         }
+
         //将第一个设置指示颜色
         CircleView firstView = (CircleView) getChildAt(0);
         firstView.setCircleColor(currentColor);
@@ -53,7 +54,6 @@ public class IndicatorLayout extends LinearLayout implements ViewPager.OnPageCha
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
     }
 
     @Override

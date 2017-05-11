@@ -12,23 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="200dp">
 
-        <com.example.bannerlibrary.IndicatorImageBaner
-            android:id="@+id/iamge_banner"
+        <com.example.bannerlibrary.IndicatorImageBanner
+            android:id="@+id/indicator_iamge_banner"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <!--<com.example.bannerlibrary.IndicatorLayout-->
-            <!--android:id="@+id/indicator_layout"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="10dp"-->
-            <!--android:layout_gravity="bottom"-->
-            <!--android:layout_marginRight="10dp"-->
-            <!--android:gravity="center_horizontal"-->
-            <!--android:orientation="horizontal"-->
-            <!--app:currentColor="@color/currentcolor"-->
-            <!--app:defaultColor="@color/defaultcolor">-->
-
-        <!--</com.example.bannerlibrary.IndicatorLayout>-->
+            android:layout_height="match_parent"
+            app:indicator_paddingBottom="10dp"
+            app:indicator_gravity="center"/>
 
     </FrameLayout>
 

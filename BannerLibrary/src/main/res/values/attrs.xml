@@ -3,12 +3,28 @@
     <declare-styleable name="IndicatorLayout">
         <attr name="defaultColor" format="color"></attr>
         <attr name="currentColor" format="color"></attr>
-
     </declare-styleable>
 
-    <declare-styleable name="IndicatorImageBaner">
+    <declare-styleable name="IndicatorImageBanner">
+        <!--小圆点未被选中时的颜色-->
         <attr name="indicator_defaultColor" format="color"></attr>
+        <!--小圆点被选中时的颜色-->
         <attr name="indicator_currentColor" format="color"></attr>
+        <!--padding  不解释-->
+        <attr name="indicator_paddingRight" format="dimension" />
+        <attr name="indicator_paddingLeft" format="dimension" />
+        <attr name="indicator_paddingTop" format="dimension" />
+        <attr name="indicator_paddingBottom" format="dimension" />
+        <!--指示器的透明度0-1-->
+        <attr name="indicator_alpha" format="float" />
+        <!--滑动的延迟时间，单位毫秒-->
+        <attr name="indicator_delay" format="integer" />
+        <!--gravity  横向的 left center right -->
+        <attr name="indicator_gravity">
+            <enum name="left" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right" value="2" />
+        </attr>
 
     </declare-styleable>
 
