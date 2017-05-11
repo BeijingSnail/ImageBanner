@@ -18,6 +18,7 @@ import java.util.TimerTask;
  */
 
 public class ImageBanner extends ViewPager {
+
     private String TAG = ImageBanner.class.getName();
 
     private Activity mActivity;
