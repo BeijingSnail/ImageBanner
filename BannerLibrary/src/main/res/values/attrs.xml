@@ -6,4 +6,10 @@
 
     </declare-styleable>
 
+    <declare-styleable name="IndicatorImageBaner">
+        <attr name="indicator_defaultColor" format="color"></attr>
+        <attr name="indicator_currentColor" format="color"></attr>
+
+    </declare-styleable>
+
 </resources>

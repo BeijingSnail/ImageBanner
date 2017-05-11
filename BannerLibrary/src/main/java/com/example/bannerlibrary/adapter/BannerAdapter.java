@@ -2,6 +2,7 @@ package com.example.bannerlibrary.adapter;
 
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -14,12 +15,16 @@ import java.util.List;
  */
 
 public class BannerAdapter extends PagerAdapter {
+    private String TAG = BannerAdapter.class.getName();
     private List bannerList;
     private OnItemClickListener bannerItemClickListener;
 
-    public BannerAdapter(List list, OnItemClickListener itemClickListener) {
+    public BannerAdapter(List list) {
         this.bannerList = list;
-        this.bannerItemClickListener = itemClickListener;
+    }
+
+    public void setBannerItemClickListener(OnItemClickListener bannerItemClickListener) {
+        this.bannerItemClickListener = bannerItemClickListener;
     }
 
     public void notifyDataSetChanged() {
@@ -36,16 +41,17 @@ public class BannerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
         View view = (View) bannerList.get(position % bannerList.size());
-//        view.setId(position % bannerList.size());
         container.addView(view);
-        if (bannerItemClickListener != null) {
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (bannerItemClickListener != null) {
                     bannerItemClickListener.onItemClick(position % bannerList.size());
+                } else {
+                    Log.e(TAG, "bannerItemClickListener is null");
                 }
-            });
-        }
+            }
+        });
 
         return bannerList.get(position % bannerList.size());
     }

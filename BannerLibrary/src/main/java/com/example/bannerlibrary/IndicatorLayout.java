@@ -15,8 +15,8 @@ public class IndicatorLayout extends LinearLayout implements ViewPager.OnPageCha
 
     private int viewNumber;
     private Context mContext;
-    private int defaultColor;
-    private int currentColor;
+    private int defaultColor = Color.WHITE;
+    private int currentColor = Color.RED;
     private int oldIndex;
 
     public IndicatorLayout(Context context, AttributeSet attrs) {
@@ -40,7 +40,7 @@ public class IndicatorLayout extends LinearLayout implements ViewPager.OnPageCha
             //设置宽高
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(10, 10);
             //设置margin
-            params.setMargins(2, 0, 2, 0);
+            params.setMargins(3, 0, 3, 0);
             view.setLayoutParams(params);
             //先全部设置默认颜色
             view.setCircleColor(defaultColor);
