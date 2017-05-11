@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="IndicatorLayout">
-        <attr name="defaultColor" format="color"></attr>
-        <attr name="currentColor" format="color"></attr>
+    <declare-styleable name="ImageBanner">
+        <!--滑动的延迟时间，单位毫秒-->
+        <attr name="delay" format="integer" />
     </declare-styleable>
 
     <declare-styleable name="IndicatorImageBanner">
