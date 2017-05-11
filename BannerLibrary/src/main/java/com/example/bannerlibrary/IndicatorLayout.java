@@ -22,9 +22,9 @@ public class IndicatorLayout extends LinearLayout implements ViewPager.OnPageCha
     public IndicatorLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.mContext = context;
-        TypedArray arrray = context.obtainStyledAttributes(attrs, R.styleable.IndicatorLayout);
-        defaultColor = arrray.getColor(R.styleable.IndicatorLayout_defaultColor, Color.WHITE);
-        currentColor = arrray.getColor(R.styleable.IndicatorLayout_currentColor, Color.RED);
+        TypedArray arrray = context.obtainStyledAttributes(attrs, R.styleable.IndicatorImageBanner);
+        defaultColor = arrray.getColor(R.styleable.IndicatorImageBanner_indicator_defaultColor, Color.WHITE);
+        currentColor = arrray.getColor(R.styleable.IndicatorImageBanner_indicator_currentColor, Color.RED);
         arrray.recycle();
     }
 

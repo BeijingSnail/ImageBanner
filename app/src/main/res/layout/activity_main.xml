@@ -12,7 +12,10 @@
         android:id="@+id/indicator_iamge_banner"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        app:indicator_defaultColor="@android:color/darker_gray"
+        app:indicator_currentColor="@android:color/holo_blue_dark"
         app:indicator_gravity="center"
+        app:indicator_delay="3000"
         app:indicator_paddingBottom="10dp" />
 
 </LinearLayout>
