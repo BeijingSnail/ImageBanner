@@ -17,7 +17,8 @@ import java.util.TimerTask;
  * Created by zhangzhiqiagn on 2017/4/27.
  */
 
-public class ImageBanner extends ViewPager{
+public class ImageBanner extends ViewPager {
+    private String TAG = ImageBanner.class.getName();
 
     private Activity mActivity;
 
@@ -33,10 +34,10 @@ public class ImageBanner extends ViewPager{
     private int scrollTime = 2000;
     private Timer timer;
     private IndicatorLayout mIndicatorLayout;
-    private OnItemClickListener mBannerItemClickListener;
+    private BannerAdapter bannerAdapter;
 
     public void setBannerItemClickListener(OnItemClickListener onItemClickListener) {
-        this.mBannerItemClickListener = onItemClickListener;
+        bannerAdapter.setBannerItemClickListener(onItemClickListener);
     }
 
     /**
@@ -68,7 +69,7 @@ public class ImageBanner extends ViewPager{
     public void start(Activity mainActivity, List<View> imgList) {
 
         if (imgList == null) {
-            throw new RuntimeException("imgList is null");
+            throw new RuntimeException(TAG + "====>imgList is null");
         }
 
         this.mActivity = mainActivity;
@@ -79,7 +80,9 @@ public class ImageBanner extends ViewPager{
             setOvalLayout(mIndicatorLayout);
         }
 
-        this.setAdapter(new BannerAdapter(viewList, mBannerItemClickListener));
+        bannerAdapter = new BannerAdapter(viewList);
+
+        this.setAdapter(bannerAdapter);
 
         if (scrollTime != 0 && imgList.size() > 1) {
 
@@ -99,6 +102,7 @@ public class ImageBanner extends ViewPager{
                 }
             });
         }
+
         if (viewList.size() > 1) {
             this.setCurrentItem((Integer.MAX_VALUE / 2)
                     - (Integer.MAX_VALUE / 2) % viewList.size());

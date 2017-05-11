@@ -10,7 +10,6 @@ import android.view.View;
  * 自定义圆形view（小圆点）
  * Created by zhangzhiqiang on 2017/4/28.
  */
-
 public class CircleView extends View {
 
     private Paint circlePaint;
@@ -25,10 +24,10 @@ public class CircleView extends View {
     }
 
     private void init() {
+
         this.circlePaint = new Paint();
         this.circlePaint.setAntiAlias(true);//消除锯齿
         this.circlePaint.setStyle(Paint.Style.FILL);
-
     }
 
     public void setCircleColor(int resource) {
@@ -36,7 +35,6 @@ public class CircleView extends View {
         circlePaint.setColor(resource);
         //刷新onDraw
         invalidate();
-        
     }
 
     @Override
