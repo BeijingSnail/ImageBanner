@@ -8,17 +8,11 @@
     android:orientation="vertical"
     tools:context="com.example.snail.imagebanner.MainActivity">
 
-    <FrameLayout
+    <com.example.bannerlibrary.IndicatorImageBanner
+        android:id="@+id/indicator_iamge_banner"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
-
-        <com.example.bannerlibrary.IndicatorImageBanner
-            android:id="@+id/indicator_iamge_banner"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:indicator_paddingBottom="10dp"
-            app:indicator_gravity="center"/>
-
-    </FrameLayout>
+        android:layout_height="200dp"
+        app:indicator_gravity="center"
+        app:indicator_paddingBottom="10dp" />
 
 </LinearLayout>
