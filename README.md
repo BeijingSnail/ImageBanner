@@ -32,6 +32,7 @@ imageBanner.setBannerItemClickListener(new OnItemClickListener() {
 - 同样实现了点击事件的监听，可参考ImageBanner的使用。
 
 #### 可在项目中添加依赖
+
 1 Add it in your root build.gradle at the end of repositories:
 ```
 	allprojects {
