@@ -1,7 +1,7 @@
 # HeaderCarousel
 图片自动轮播器（多用于头部或底部展示）
 #### ImageBanner继承自ViewPager
-- 默认滑动间隔为2秒，可通过setScrollTime（int Millisecond）根据实际情况进行设置，单位毫秒
+- 默认滑动间隔为2秒，可通过xml 或 setScrollTime（int Millisecond）根据需要进行设置，单位毫秒
 - start(ViewPager vp, ArrayList viewList)方法中使用Timert开启定时器，适配视图并开始循环轮播
 内部设置触摸监听，确保手动滑动图片时移除定时器，并在结束时开始新的定时器
 - ImageBanner实现了点击事件，并给子每张图片设置了id(从0开始)
