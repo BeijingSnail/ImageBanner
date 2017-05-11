@@ -46,7 +46,7 @@ imageBanner.setBannerItemClickListener(new OnItemClickListener() {
 2 Add the dependency
 ```
 dependencies {
-	        compile 'com.github.BeijingSnail:HeaderCarousel:1.0'
+	        compile 'com.github.BeijingSnail:ImageBanner:v1.1'
 	}
 ```
 
