@@ -30,6 +30,7 @@ imageBanner.setBannerItemClickListener(new OnItemClickListener() {
 - 继承自RelativeLayout，将ImageBanner和IndicatorLayout再次封装
 - 在attrs中设置了：指示器颜色、位置、透明度等属性，具体可看代码，注释非常完整
 - 同样实现了点击事件的监听，可参考ImageBanner的使用。
+- 不需要指示器时，可直接使用ImageBanner;或者设置IndicatorImageBanner 透明度为0
 
 #### 可在项目中添加依赖
 
