@@ -17,7 +17,6 @@ imageBanner.setBannerItemClickListener(new OnItemClickListener() {
             public void onItemClick(int position) {
 	    
             }
-	    
         });
 ```
 
