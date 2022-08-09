@@ -56,4 +56,4 @@ dependencies {
 
 ![Image text](https://github.com/BeijingSnail/ImageBanner/blob/master/images/ImageBanner.png)
 
-
+1
